@@ -1,4 +1,5 @@
-import { DictionaryList } from '@components/DictionaryList';
+import { Dictionary } from '@components/Dictionary';
+import Footer from '@layout/footer';
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Input, Spin } from 'antd';
@@ -63,8 +64,11 @@ const Home: React.FC<Props> = () => {
 
   if (fetching) {
     return (
-      <div style={{ position: 'absolute', margin: 'auto', top: 0, left: 0, right: 0, bottom: 0, height: 100, width: 100}} >
-        <Spin size={'large'}/>
+      <div style={{
+        position: 'absolute', margin: 'auto', top: 0, left: 0, right: 0,
+        bottom: 0, height: 100, width: 100
+      }}>
+        <Spin size={'large'} />
       </div>);
   }
 
@@ -75,9 +79,8 @@ const Home: React.FC<Props> = () => {
               style={{ width: 250, margin: '10px 20px' }}
               onChange={e => doSearch(e.target.value)}
               allowClear={true} />
-      <div className="home">
-        <DictionaryList entries={visibleData} />
-      </div>
+      <Dictionary entries={visibleData} />
+      <Footer />
     </>
   );
 };
