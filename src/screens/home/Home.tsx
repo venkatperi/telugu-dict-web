@@ -66,9 +66,9 @@ const Home: React.FC<Props> = () => {
     return (
       <div style={{
         position: 'absolute', margin: 'auto', top: 0, left: 0, right: 0,
-        bottom: 0, height: 100, width: 100
+        bottom: 0, height: 50, width: 50
       }}>
-        <Spin size={'large'} />
+        <Spin size={'large'} style={{width: 50, height: 50}}/>
       </div>);
   }
 
