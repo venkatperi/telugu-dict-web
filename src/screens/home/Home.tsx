@@ -2,7 +2,7 @@ import { DictionaryList } from '@components/DictionaryList';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector, useDispatch } from 'react-redux';
-import { Input } from 'antd';
+import { Input, Spin } from 'antd';
 import { fetchDict } from '@redux/actions';
 import Header from '@layout/header';
 import lunr from 'lunr';
@@ -16,7 +16,6 @@ const { Search } = Input;
 type Props = {};
 
 const Home: React.FC<Props> = () => {
-  const { t } = useTranslation('homeScreen');
   const [fetching, setFetching] = useState(true);
   const list = useSelector((state: IReducerStates) => state.dict);
   const dispatch = useDispatch();
@@ -26,20 +25,18 @@ const Home: React.FC<Props> = () => {
 
   useEffect(() => {
     (async () => {
-      await setFetching(true);
-
       try {
         await dispatch(fetchDict());
       } catch (error) {
         console.log(error);
       }
 
-      setFetching(false);
     })();
   }, [dispatch]);
 
 
   useEffect(() => {
+    if (list.length === 0) return;
     setVisibleData(list);
     setIndex(
       lunr(function() {
@@ -51,6 +48,7 @@ const Home: React.FC<Props> = () => {
         list.forEach((x, i) => this.add({ ...x, index: i }));
       })
     );
+    setFetching(false);
   }, [list]);
 
 
@@ -62,6 +60,13 @@ const Home: React.FC<Props> = () => {
       const res = items.map(x => list[parseInt(x.ref, 10)]);
       setVisibleData(res);
     }
+  }
+
+  if (fetching) {
+    return (
+      <div style={{ position: 'absolute', margin: 'auto', top: 0, left: 0, right: 0, bottom: 0, height: 100, width: 100}} >
+        <Spin size={'large'}/>
+      </div>);
   }
 
   return (
