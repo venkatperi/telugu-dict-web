@@ -69,6 +69,8 @@ export const DictionaryList = (props: DictProps) => {
         defaultCurrent={1}
         pageSize={currentPageSize}
         total={props.entries.length}
+        showQuickJumper={true}
+        showSizeChanger={true}
       />
       {entries
         .slice((currentPage - 1) * currentPageSize, currentPage * currentPageSize)
