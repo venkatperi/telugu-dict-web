@@ -73,15 +73,15 @@ const Home: React.FC<Props> = () => {
   }
 
   return (
-    <>
+    <div style={{maxWidth:800, width: '100vw', margin: '0 auto'}}>
       <Header />
       <Search placeholder="search"
-              style={{ width: 250, margin: '10px 20px' }}
+              style={{ width: 250, margin: '0 20px' }}
               onChange={e => doSearch(e.target.value)}
               allowClear={true} />
       <Dictionary entries={visibleData} />
       <Footer />
-    </>
+    </div>
   );
 };
 
