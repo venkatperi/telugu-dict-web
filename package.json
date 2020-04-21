@@ -2,7 +2,6 @@
   "name": "react-typescript-ant-boilerplate",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://www.vperi.com/telugu-dict",
   "scripts": {
     "analyze": "source-map-explorer 'build/static/js/*.js'",
     "start": "npm-run-all -p prettier-watch stylelint-watch start-js",
