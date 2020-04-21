@@ -1,6 +1,5 @@
 import { DictionaryList } from '@components/DictionaryList';
 import React, { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { useSelector, useDispatch } from 'react-redux';
 import { Input, Spin } from 'antd';
 import { fetchDict } from '@redux/actions';

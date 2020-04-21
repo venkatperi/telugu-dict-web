@@ -44,7 +44,7 @@ const DictItem = (props: { entry: DictionaryEntry }) => (
 export const DictionaryList = (props: DictProps) => {
   const [entries, setEntries] = React.useState<DictionaryEntry[]>([]);
   const [currentPage, setCurrentPage] = React.useState(1);
-  const [currentPageSize, setCurrentPageSize] = React.useState(10);
+  const [currentPageSize, setCurrentPageSize] = React.useState(50);
 
   React.useEffect(() => {
     setEntries(props.entries);
@@ -67,6 +67,7 @@ export const DictionaryList = (props: DictProps) => {
         onShowSizeChange={onPaginationSizeChange}
         showTotal={total => `${total} entries`}
         defaultCurrent={1}
+        pageSize={currentPageSize}
         total={props.entries.length}
       />
       {entries
