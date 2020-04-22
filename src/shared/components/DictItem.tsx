@@ -12,7 +12,7 @@ export const DictItem = (props: { entry: DictionaryEntry }) => (
     }}
   >
     <div>
-      <span style={{ fontSize: 26, fontWeight: 200, paddingRight: 10 }}>
+      <span style={{ fontSize: 30, fontWeight: 200, paddingRight: 10 }}>
         <Roman2Unicode text={props.entry.word} />
       </span>
       <span>{props.entry.grammaticalCategory}</span> &nbsp;
