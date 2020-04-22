@@ -7,32 +7,25 @@ export interface DictProps {
   entries: DictionaryEntry[];
 }
 
-const Page = (props: {
+const Pager = (props: {
   onChange: (page: number) => void;
   onShowSizeChange: (page: number, pageSize: number) => void;
   showTotal: (total: number) => string;
   pageSize: number;
   dictionaryEntries: DictionaryEntry[];
 }) => (
-  <div style={{ position: 'relative', width: '100%', height: '1em' }}>
-    <Pagination
-      style={{
-        position: 'absolute',
-        display: 'block',
-        right: 20,
-        top: 6
-      }}
-      onChange={props.onChange}
-      onShowSizeChange={props.onShowSizeChange}
-      showTotal={props.showTotal}
-      defaultCurrent={1}
-      pageSize={props.pageSize}
-      total={props.dictionaryEntries.length}
-      size="small"
-      showQuickJumper={true}
-      showSizeChanger={true}
-    />
-  </div>
+  <Pagination
+    style={{ marginTop: 20, marginLeft: 20 }}
+    onChange={props.onChange}
+    onShowSizeChange={props.onShowSizeChange}
+    showTotal={props.showTotal}
+    defaultCurrent={1}
+    pageSize={props.pageSize}
+    total={props.dictionaryEntries.length}
+    size="small"
+    showQuickJumper={true}
+    showSizeChanger={true}
+  />
 );
 
 export const Dictionary = (props: DictProps) => {
@@ -55,7 +48,7 @@ export const Dictionary = (props: DictProps) => {
 
   return (
     <div>
-      <Page
+      <Pager
         onChange={onPaginationChange}
         onShowSizeChange={onPaginationSizeChange}
         showTotal={total => `${total} entries`}
@@ -69,7 +62,7 @@ export const Dictionary = (props: DictProps) => {
             <DictItem key={entry.word + entry.meaning} entry={entry} />
           ))}
       </div>
-      <Page
+      <Pager
         onChange={onPaginationChange}
         onShowSizeChange={onPaginationSizeChange}
         showTotal={total => `${total} entries`}
