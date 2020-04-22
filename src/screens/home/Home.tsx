@@ -2,7 +2,7 @@ import { Dictionary } from '@components/Dictionary';
 import Footer from '@layout/footer';
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Input, Spin } from 'antd';
+import { Affix, Input, Spin } from 'antd';
 import { fetchDict } from '@redux/actions';
 import Header from '@layout/header';
 import lunr from 'lunr';
@@ -65,18 +65,22 @@ const Home: React.FC<Props> = () => {
         position: 'absolute', margin: 'auto', top: 0, left: 0, right: 0,
         bottom: 0, height: 50, width: 50
       }}>
-        <Spin size={'large'} style={{width: 50, height: 50}}/>
+        <Spin size={'large'} style={{ width: 50, height: 50 }} />
       </div>);
   }
 
   return (
-    <div style={{maxWidth:800, width: '100vw', margin: '0 auto'}}>
-      <Header />
-      <Search placeholder="search"
-              style={{ width: 250, margin: '0 20px', fontSize: '1.5em' }}
-              onChange={e => doSearch(e.target.value)}
-              allowClear={true} />
-      <Dictionary entries={visibleData} />
+    <div style={{ maxWidth: 800, width: '100vw', margin: '0 auto' }}>
+      <Affix offsetTop={0} >
+        <div style={{background: '#fff', paddingBottom: 10}}>
+          <Header />
+          <Search placeholder="search"
+                  style={{ width: 250, margin: '0 20px', fontSize: '1.5em' }}
+                  onChange={e => doSearch(e.target.value)}
+                  allowClear={true} />
+        </div>
+      </Affix>
+      <Dictionary  entries={visibleData} />
       <Footer />
     </div>
   );
