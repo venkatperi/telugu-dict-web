@@ -41,14 +41,11 @@ const Home: React.FC<Props> = () => {
     setIndex(
       lunr(function() {
         this.ref('index');
-        this.field('word');
-        this.field('plural');
-        this.field('oblique');
         this.field('meaning');
         list.forEach((x, i) => this.add({ ...x, index: i }));
+        setFetching(false);
       })
     );
-    setFetching(false);
   }, [list]);
 
 
@@ -76,7 +73,7 @@ const Home: React.FC<Props> = () => {
     <div style={{maxWidth:800, width: '100vw', margin: '0 auto'}}>
       <Header />
       <Search placeholder="search"
-              style={{ width: 250, margin: '0 20px' }}
+              style={{ width: 250, margin: '0 20px', fontSize: '1.5em' }}
               onChange={e => doSearch(e.target.value)}
               allowClear={true} />
       <Dictionary entries={visibleData} />

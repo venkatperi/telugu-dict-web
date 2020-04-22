@@ -14,12 +14,13 @@ const Page = (props: {
   pageSize: number;
   dictionaryEntries: DictionaryEntry[];
 }) => (
-  <div style={{ position: 'relative', width: '100%' }}>
+  <div style={{ position: 'relative', width: '100%', height: '1em' }}>
     <Pagination
       style={{
         position: 'absolute',
         display: 'block',
-        right: 20
+        right: 20,
+        top: 6
       }}
       onChange={props.onChange}
       onShowSizeChange={props.onShowSizeChange}
