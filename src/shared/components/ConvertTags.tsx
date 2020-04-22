@@ -13,24 +13,25 @@ export const ConvertTags = (props: { text: string | object }) => {
 
   return (
     <div>
-      {str.split(' ').map((x: string, i: number) => {
-        if (x.indexOf('1@') >= 0) transliterate = true;
-        else if (x.indexOf('@1') >= 0) transliterate = false;
+      {str.split(' ').map((word: string, index: number) => {
+        if (word.indexOf('1@') >= 0) transliterate = true;
+        else if (word.indexOf('@1') >= 0) transliterate = false;
 
-        if (x.indexOf('<') >= 0) italics = true;
-        else if (x.indexOf('>') >= 0) italics = false;
+        if (word.indexOf('<') >= 0) italics = true;
+        else if (word.indexOf('>') >= 0) italics = false;
 
-        x = removeAny(x, '1@', '@1', '<', '>');
+        // tslint:disable-next-line:no-parameter-reassignment
+        word = removeAny(word, '1@', '@1', '<', '>');
         if (transliterate) {
           return (
-            <span key={x + i}>
-              <Roman2Unicode text={x} />{' '}
+            <span key={word + index}>
+              <Roman2Unicode text={word} />{' '}
             </span>
           );
         }
 
         const Tag = italics ? 'i' : 'span';
-        return <Tag key={x + i}>{x} </Tag>;
+        return <Tag key={word + index}>{word} </Tag>;
       })}
     </div>
   );

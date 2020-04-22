@@ -71,8 +71,8 @@ const Home: React.FC<Props> = () => {
 
   return (
     <div style={{ maxWidth: 800, width: '100vw', margin: '0 auto' }}>
-      <Affix offsetTop={0} >
-        <div style={{background: '#fff', paddingBottom: 10}}>
+      <Affix offsetTop={0}>
+        <div style={{ background: '#fff', paddingBottom: 10 }}>
           <Header />
           <Search placeholder="search"
                   style={{ width: 250, margin: '0 20px', fontSize: '1.5em' }}
@@ -80,7 +80,7 @@ const Home: React.FC<Props> = () => {
                   allowClear={true} />
         </div>
       </Affix>
-      <Dictionary  entries={visibleData} />
+      <Dictionary entries={visibleData} />
       <Footer />
     </div>
   );

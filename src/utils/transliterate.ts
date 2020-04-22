@@ -123,6 +123,7 @@ export function roman2unicode(input: string | undefined, block: number): string 
       } else if (i === 1) {
         prev = s;
         output.push(s);
+        // tslint:disable-next-line:no-increment-decrement
         idx++;
       }
     }
